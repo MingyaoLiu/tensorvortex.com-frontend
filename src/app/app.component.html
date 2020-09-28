@@ -1,0 +1,14 @@
+<div id="site-wrapper" [ngClass]="{'show-nav': !isNavOpen}">
+    <app-side-nav id="side_nav">
+
+    </app-side-nav>
+    <div id="site-canvas" [@routeAnimations]="prepareRoute(outlet)" (click)="clickOnPageSpace($event)">
+        <router-outlet #outlet="outlet"></router-outlet>
+        <!-- Footer -->
+
+
+    </div>
+</div>
+<app-init-loader>
+
+</app-init-loader>

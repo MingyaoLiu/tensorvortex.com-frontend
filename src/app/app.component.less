@@ -1,0 +1,100 @@
+
+#site-wrapper {
+    overflow: hidden;
+    width: 100%;
+    margin: 0;
+    height:100%;
+    perspective: 4000;
+    -webkit-perspective: 4000;
+    -moz-perspective: 4000;
+    position: absolute;
+}
+#site-wrapper.show-nav #site-canvas {
+    -webkit-transform: translateX(300px);
+    transform: translateX(300px);
+    background-color: #FFF;
+}
+#site-wrapper.show-nav #side_nav {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+    opacity: 100;
+}
+
+#side_nav {
+    opacity: 0;
+    text-align: center;
+    display: block;
+    min-width: 300px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transform: rotateY(25deg);
+    -moz-transform: rotateY(25deg);
+    transform: rotateY(25deg);
+    -webkit-transition: .4s linear all;
+    -moz-transition-duration: .4s linear all;
+    transition: .4s linear all;
+    -webkit-transform-origin: left center;
+    -moz-transform-origin: left center;
+    transform-origin: left center;
+
+    // -webkit-box-shadow: inset -16px 0 24px -16px rgba(0,0,0,0.4);
+    // box-shadow: inset -16px 0 24px -16px rgba(0,0,0,0.4);
+    
+    // background: linear-gradient(120deg, #8f0c0c, #5d0073);
+    // background-size: 400% 100%;
+
+    // -webkit-animation: gradient_purple_red 8s ease infinite;
+    // -moz-animation: gradient_purple_red 8s ease infinite;
+    // animation: gradient_purple_red 8s ease infinite;
+
+    // @-webkit-keyframes gradient_purple_red {
+    //     0%{background-position:14% 0%}
+    //     50%{background-position:87% 100%}
+    //     100%{background-position:14% 0%}
+    // }
+    // @-moz-keyframes gradient_purple_red {
+    //     0%{background-position:14% 0%}
+    //     50%{background-position:87% 100%}
+    //     100%{background-position:14% 0%}
+    // }
+    // @keyframes gradient_purple_red { 
+    //     0%{background-position:14% 0%}
+    //     50%{background-position:87% 100%}
+    //     100%{background-position:14% 0%}
+    // }
+    background: #121212;
+    background-image: url(../assets/tiger2.png);
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    background-size: 50%;
+}
+
+#site-canvas {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    -webkit-transition: 0.6s ease all;
+    -moz-transition-duration: 0.6s ease all;
+    transition: 0.6s ease all;
+    background-color: #FFF;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 600px) {
+  #side_nav {
+    min-width: 90%;
+  }
+  #site-wrapper.show-nav #site-canvas {
+    -webkit-transform: translateX(90%);
+    transform: translateX(90%);
+    background-color: #FFF;
+}
+
+}

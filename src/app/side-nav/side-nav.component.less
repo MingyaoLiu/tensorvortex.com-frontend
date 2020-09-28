@@ -1,0 +1,65 @@
+#sideMenu {
+	text-align: right;
+	transform: translateY(-50%);
+	width: 90%;
+    max-width: 600px;
+	margin-top: 120%;
+    list-style-type: none;
+}
+
+.slider {
+	height: 300px;
+	opacity: 100;
+	-webkit-transition: .3s all;
+	-moz-transition-duration: .3s all;
+	transition: .3s all;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+	transition-timing-function: ease-out;
+}
+
+.slider.closed {
+	height: 0;
+	opacity: 0;
+}
+#sideMenu .side-menu-title-1 {
+    color: #EFEFEF;
+    font-size: 2.4rem;
+}
+
+#sideMenu .active {
+    color: red;
+    font-weight: bold;
+}
+
+#sideMenu input[type=checkbox] {
+	/* hide native checkbox */
+	position: absolute;
+	opacity: 0;
+}
+
+#sideMenu label,
+#sideMenu a {
+    font-weight: normal;
+    letter-spacing: 0.1rem;
+	position: relative;
+	display: block;
+	padding: 0.2rem 0.4rem 0.4rem 0.2rem;
+}
+
+#sideMenu label:hover,
+#sideMenu a:hover {
+    color: red
+}
+#sideMenu label:focus,
+#sideMenu a:focus {
+    outline: 0
+}
+
+
+#sideMenu label {
+	cursor: pointer;
+}

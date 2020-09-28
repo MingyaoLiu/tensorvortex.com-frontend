@@ -1,0 +1,235 @@
+@font-face {
+  font-family: AnonymousPro;
+  src: url(assets/fonts/AnonymousPro/AnonymousPro.ttf);
+}
+@font-face {
+    font-family: AnonymousPro;
+    src: url(assets/fonts/AnonymousPro/AnonymousPro-Bold.ttf);
+    font-weight: bold;
+  }
+  @font-face {
+    font-family: AnonymousPro;
+    src: url(assets/fonts/AnonymousPro/AnonymousPro-BoldItalic.ttf);
+    font-style: italic;
+    font-weight: bold;
+  }
+    
+
+
+@font-face {
+  font-family: CapSharp;
+  src: url(assets/fonts/CapSharp.ttf);
+}
+* {
+
+    font-family: 'AnonymousPro', 'Times New Roman', Times, serif;
+}
+
+
+::selection {
+    color: #fff;
+    background-color: #d0414e;
+}
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+.horizontalDivider {
+    height: 1px;
+    display: block;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    max-width: 100%;
+    background-color: #CCC;
+}
+
+
+.floatHeaderTxtContainer {
+    position: absolute; 
+    left: 50%; 
+    top: 50%;
+    margin-left: 0rem;
+    margin-top: 0rem;
+}
+.floaterText {
+    color: white; 
+    font-size: 2rem; 
+    font-family: CapSharp !important
+}
+
+// #menu-icon .bar1.change  {
+//   -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+//   transform: rotate(-45deg) translate(-9px, 6px);
+// }
+
+// #menu-icon .bar2.change  {opacity: 0;}
+
+// #menu-icon .bar3.change  {
+//   -webkit-transform: rotate(45deg) translate(-8px, -8px);
+//   transform: rotate(45deg) translate(-8px, -8px);
+// }
+
+
+.pageHeader, .post_header {
+    height: 456px;
+    width: 100%;
+    color: #fff;
+    padding-top: 1.5rem;
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+    background-size: cover; 
+    overflow: hidden;  // Add to hide floating logo when the height can't be calculated correctly in small screen.
+}
+
+@media (min-width: 576px) { 
+
+    .pageHeader, .post_header {
+        padding-top: 2rem;
+        height: 274px
+    }
+    .floaterText {
+        font-size: 2.5rem; 
+    }
+
+    #menu-icon .bar1, #menu-icon .bar2, #menu-icon .bar3 {
+        padding: 0.15rem;
+        width: 2.5rem;
+        height: 0.04rem;
+        margin: 0.4rem 0;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+
+    .pageHeader, .post_header {
+        padding-top: 2rem;
+        height: 274px
+    }
+
+    .floaterText {
+        font-size: 3rem; 
+    }
+
+    #menu-icon .bar1, #menu-icon .bar2, #menu-icon .bar3 {
+        padding: 0.15rem;
+        width: 2.5rem;
+        height: 0.04rem;
+        margin: 0.4rem 0;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+    .pageHeader, .post_header {
+        padding-top: 3rem;
+        height: 548px
+    }
+    .floaterText {
+        font-size: 3rem; 
+    }
+
+    #menu-icon .bar1, #menu-icon .bar2, #menu-icon .bar3 {
+        padding: 0.2rem;
+        width: 3rem;
+        height: 0.06rem;
+        margin: 0.5rem 0;
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+    .pageHeader, .post_header {
+        padding-top: 3rem;
+        height: 548px
+    }
+    .floaterText {
+        font-size: 4rem; 
+    }
+
+    #menu-icon .bar1, #menu-icon .bar2, #menu-icon .bar3 {
+        padding: 0.2rem;
+        width: 3rem;
+        height: 0.06rem;
+        margin: 0.5rem 0;
+    }
+}
+
+
+a {
+	text-decoration: none;
+}
+
+input {
+	font-family: "Jaldi", sans-serif;
+	font-size: 1.6rem;
+}
+
+
+.anim.ng-enter {
+	transition: opacity 1s;
+	opacity: 0.0;
+}
+
+.anim.ng-enter-active {
+	opacity: 1.0;
+}
+
+.anim.ng-leave {
+	display: none;
+}
+
+#page_loading_screen {
+	height: 100%;
+	width: 100%;
+	background-color: #CCC;
+}
+
+html {
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	font-size: 62.5%;
+	background-color: black;
+}
+
+body {
+	font-size: 1.6rem;
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	overflow: hidden;
+	position: absolute;
+}
+
+
+/* Image/Doc preloader placeholder **/
+@keyframes placeHolderShimmer{
+    0%{
+        background-position: -100% 0
+    }
+    100%{
+        background-position: 100% 0
+    }
+}
+.animated-background {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: #f6f7f8;
+    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+    position: relative;
+}

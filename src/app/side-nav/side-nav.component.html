@@ -1,0 +1,23 @@
+<ul id="sideMenu" class="animated">
+    <li style="z-index: 1000;" class="has-children" *ngFor="let item of objectKeys(list); index as i">
+        <input routerLink="/{{item.toLowerCase()}}" (click)="openDraw($event)" type="checkbox" name="group-{{i}}"
+            id="group-{{i}}">
+        <label routerLink="/{{item.toLowerCase()}}" routerLinkActive="active" class="side-menu-title-1"
+            for="group-{{i}}">{{item}}</label>
+
+        <ul *ngIf="objectKeys(list[item]).length > 0" style="z-index: 200;" class="slider closed">
+            <li class="has-children" *ngFor="let sub_item of objectKeys(list[item]); index as j">
+                <input type="checkbox" name="sub-group-{{j}}" id="sub-group-{{j}}">
+                <label for="sub-group-{{j}}">{{sub_item}}</label>
+
+
+                <!-- <ul>
+                    <li *ngFor="let sub_sub_item of objectKeys(list[item][sub_item]); index as k">
+                        <a href="#0">{{sub_sub_item}}</a>
+                    </li>
+                </ul> -->
+
+            </li>
+        </ul>
+
+</ul>

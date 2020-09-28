@@ -1,0 +1,153 @@
+
+@font-face {
+    font-family: Oswald;
+    src: url(../../assets/fonts/Oswald/ttf/Oswald-Regular.ttf);
+  }
+  @font-face {
+    font-family: Oswald;
+    src: url(../../assets/fonts/Oswald/ttf/Oswald-Light.ttf);
+    font-weight: lighter;
+  }
+  @font-face {
+    font-family: Oswald;
+    src: url(../../assets/fonts/Oswald/ttf/Oswald-Bold.ttf);
+    font-weight: bold;
+  }
+//   @font-face {
+//     font-family: Oswald;
+//     src: url(../../assets/fonts/Oswald/ttf/Oswald-Medium.ttf);
+//     font-weight: 600;
+//   }
+  @font-face {
+    font-family: Oswald;
+    src: url(../../assets/fonts/Oswald/ttf/OswaldHeavy-Regular.ttf);
+    font-weight: bolder;
+  }
+.resumeDivider {
+    width: 10rem; 
+    border: 0; 
+    height: 1px; 
+    background-color: #ABABAB; 
+    border-radius: 2px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(100, 100, 100, 0.75), rgba(100, 100, 100, 0.75),rgba(100, 100, 100, 0.75), rgba(0, 0, 0, 0));
+}
+
+#about-header {
+    background: url(../../assets/bg_1280_548_4.png) center center no-repeat;
+    background-size: cover;
+    height: 187px
+}
+
+#about-header-float-left {
+    margin-left: -8rem;
+    margin-top: -3.5rem; 
+}
+#about-header-float-left span {
+    color: #FFF;
+    text-shadow: -1px -1px 0 #139bb2,  2px -1px 0 #139bb2, -1px 2px 0 #139bb2, 2px 1px 0 #139bb2;
+}
+#about-header-float-right {
+    margin-left: -3rem;
+    margin-top: 0rem; 
+}
+#about-header-float-right span {
+    color:#139bb2;
+    text-shadow: -1px -1px 0 #FFF,  2px -1px 0 #FFF, -1px 2px 0 #FFF, 1px 2px 0 #FFF;
+}
+
+
+
+
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { 
+
+
+    #PhoneLink:after {
+        content: ""
+    }
+    #EmailLink:after {
+        content: ""
+    }
+    #WebsiteLink:after {
+        content: ""
+    }
+    #about-header-float-left {
+        margin-left: -8rem;
+        margin-top: -3.5rem; 
+    }
+    #about-header-float-right {
+        margin-left: -3rem;
+        margin-top: 0rem; 
+    }
+
+
+    #about-header {
+        height: 274px
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+
+
+    #PhoneLink:after {
+        content: " +1 226-7508200"
+    }
+    #EmailLink:after {
+        content: " mingyaoliu93@gmail.com"
+    }
+    #WebsiteLink:after {
+        content: " mingyaoliu.com"
+    }
+
+    
+    #about-header-float-left {
+        margin-left: -15rem;
+        margin-top: -4rem; 
+    }
+    #about-header-float-right {
+        margin-left: 1rem;
+        margin-top: 0rem; 
+    }
+
+
+    #about-header {
+        height: 274px
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+    
+    #about-header-float-left {
+        margin-left: -17rem;
+        margin-top: -4rem; 
+    }
+    #about-header-float-right {
+        margin-left: 7rem;
+        margin-top: -4rem; 
+    }
+
+
+    #about-header {
+        height: 548px
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    
+    #about-header-float-left {
+        margin-left: -24rem;
+        margin-top: -4rem; 
+    }
+    #about-header-float-right {
+        margin-left: 10rem;
+        margin-top: -4rem; 
+    }
+
+    #about-header {
+        height: 548px
+    }
+}

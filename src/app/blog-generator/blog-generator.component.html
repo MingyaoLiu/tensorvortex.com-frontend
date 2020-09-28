@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-6 mx-auto">
+
+            <br />
+            <h1>Matrix Blog CSM Console</h1>
+            <br />
+            <div class="row">
+                <div class="dropdown" app-drop-down>
+                    <button type="button" class="btn btn-warning btn-lg dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        {{ selectedDraft.title == null || selectedDraft.title == "" ? "Select Post to Edit" : selectedDraft.title}}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="HTML Selector Dropdown">
+                        <a *ngFor="let draft of drafts; index as i" class="dropdown-item"
+                            (click)="selectDraft($event, i)">{{i + 1}}. {{draft.title}}</a>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <hr />
+            <br />
+
+            <div *ngFor="let obj of selectedDraft.article; index as i">
+
+                <div class="btn-group">
+                    <div class="dropdown" app-drop-down (valueChange)="updateParaTag($event, i)">
+                        <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            {{obj.tag == null || obj.tag == "" ? "New Tag" : obj.tag}}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="HTML Selector Dropdown">
+                            <a class="dropdown-item" *ngFor="let tag of tagArray">{{tag}}</a>
+                        </div>
+                    </div>
+                    &nbsp;&nbsp;
+                    <div class="dropdown" app-drop-down (valueChange)="updateParaClass($event, i)">
+                        <button type="button" class="btn btn-info btn-lg dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            {{obj.class == null || obj.class == "" ? "New Class" : obj.class}}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="HTML Selector Dropdown">
+                            <a class="dropdown-item" *ngFor="let class of classArray">{{class}}</a>
+                        </div>
+                    </div>
+                    &nbsp;&nbsp;
+                    <button type="button" class="btn btn-success btn-lg" (click)="addNewPara(i)">+</button>
+                </div>
+                <div class="form-group">
+                    <br />
+                    <!-- <label>Tag: {{ obj.tag }}, Text:</label> -->
+                    <textarea *ngIf="obj.tag != 'img'" [(ngModel)]="obj.txt" (ngModelChange)="updateText($event, i)"
+                        class="form-control" style="font-size: 1.5rem" rows="3"></textarea>
+                    <div layout="column" *ngIf="obj.tag == 'img'">
+                        <input class="ng-hide" id="PhotoUploadOne" type="file"
+                            custom-on-change="handlePhotoUploadOne" />
+                        <label for="PhotoUploadOne" class="md-button md-raised md-primary">Upload Picture One</label>
+                    </div>
+                    <br />
+                </div>
+
+                <hr />
+                <br />
+            </div>
+
+
+
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6 mx-auto">
+            <br />
+            <h1>HTML Generation</h1>
+            <button type="button" class="btn btn-primary">Save To Draft</button>&nbsp;
+            <button type="button" class="btn btn-secondary">Secondary</button>&nbsp;
+            <button type="button" class="btn btn-success">Publish</button>
+            <div [innerHTML]="generatedHTML">
+            </div>
+        </div>
+
+    </div>
+</div>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<app-footer></app-footer>

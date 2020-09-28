@@ -1,0 +1,67 @@
+<header #headerRef id="blog-header" class="pageHeader" (mousemove)="onMouseMove($event)">
+
+
+    <div class="container" style="pointer-events: none; position: relative; height: 100%">
+        <app-menu-btn></app-menu-btn>
+        <div #ttref class="floatHeaderTxtContainer" id="blog-header-float-left">
+            <span class="floaterText">Matrix</span>
+            <div style="display: block; height: 100%; width: 100%; background-color: black; opacity: 1"></div>
+        </div>
+        <div #vtref class="floatHeaderTxtContainer" id="blog-header-float-right">
+            <span class="floaterText">Blog</span>
+        </div>
+
+        <div class="thumb hidden">
+            <div class="image-wrapper">
+                <!-- <img alt="Mingyao Liu" src="wp-content/themes/src/img/av-small.jpg"> -->
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-md-12 mx-auto">
+            <br />
+            <h2>Recent</h2><br />
+
+            <div class="post-preview" *ngFor="let post of posts">
+                <a routerLink="/blog/{{post._id}}">
+                    <h2 class="post-title">
+                        {{post.title}}
+                    </h2>
+                </a>
+                <h3 class="post-subtitle">
+                    {{post.subTitle}}
+                </h3>
+                <p class="post-meta">Posted by
+                    <a href="#">{{post.author}}</a>
+                    on {{post.createdAt}}</p>
+            </div>
+
+
+
+
+
+            <div class="post-preview">
+                <a routerLink="/blog/xxxxx">
+                    <h2 class="post-title">
+                        Got to DIWHY fix the gas furnace.
+                    </h2>
+                </a>
+                <h3 class="post-subtitle">
+                    it broke down during -20C winter almost died.
+                </h3>
+                <p class="post-meta">Posted by
+                    <a href="#">Mingyao Liu</a>
+                    on March 4th, 2019</p>
+            </div>
+            <hr>
+            <!-- Pager -->
+            <div class="clearfix">
+                <a class="btn btn-primary float-right" href="#">More Posts &rarr;</a>
+            </div>
+        </div>
+    </div>
+</div>

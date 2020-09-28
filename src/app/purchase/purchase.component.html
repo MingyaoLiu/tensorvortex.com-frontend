@@ -1,0 +1,388 @@
+<header id="purchase-header" class="pageHeader">
+
+
+    <div class="container" style="pointer-events: none; position: relative; height: 100%">
+        <app-menu-btn></app-menu-btn>
+        <div #ttref class="floatHeaderTxtContainer" id="purchase-header-float-left">
+            <span class="floaterText">Purchase</span>
+        </div>
+        <div #vtref class="floatHeaderTxtContainer" id="purchase-header-float-right">
+            <span class="floaterText">Stuff</span>
+        </div>
+
+        <div class="thumb hidden">
+            <div class="image-wrapper">
+                <!-- <img alt="Mingyao Liu" src="wp-content/themes/src/img/av-small.jpg"> -->
+            </div>
+        </div>
+    </div>
+</header>
+<br />
+
+<div class="container" style="font-family:Arial, Helvetica, sans-serif !important">
+
+    <div class="row mx-auto">
+        <div class="col-md col-sm-12">
+            <div class="input-group input-group-lg mb-3">
+                <div class="input-group-prepend"><span class="input-group-text">Place</span>
+                    <button class="btn btn-outline-secondary" type="button" (click)="setPlace($event)"
+                        [ngClass]="localPurchase.place == 'T&T' ? 'active': ''">T&T</button>
+                    <button class="btn btn-outline-secondary" type="button" (click)="setPlace($event)"
+                        [ngClass]="localPurchase.place == 'Costco' ? 'active': ''">Costco</button>
+                </div>
+                <input type="text" class="form-control" aria-label="Place of Shopping" [ngModel]="localPurchase.place"
+                    (ngModelChange)="localPurchase.place = $event">
+            </div>
+        </div>
+        <div class="col-md col-sm-12">
+            <div class="input-group input-group-lg mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Title</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Total Amount" [ngModel]="localPurchase.title"
+                    (ngModelChange)="localPurchase.title = $event">
+            </div>
+        </div>
+        <div class="col-md col-sm-12">
+            <div class="input-group input-group-lg mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Date</span>
+                </div>
+                <input type="string" class="form-control" placeholder="YYYY-MM-DD" aria-label="Total Amount"
+                    [ngModel]="localPurchase.date" (ngModelChange)="localPurchase.date = $event">
+            </div>
+        </div>
+
+    </div>
+    <div class="row mx-auto">
+        <div class="col-md-4 col-sm-12">
+            <div class="input-group input-group-lg mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Total $</span>
+                </div>
+                <input type="number" class="form-control" aria-label="Total Amount" [ngModel]="localPurchase.total"
+                    (ngModelChange)="localPurchase.total = $event">
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-12">
+            <div class="input-group input-group-lg mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">Payer</span>
+                    <button class="btn btn-outline-secondary" type="button" (click)="setPayer($event)"
+                        [ngClass]="(localPurchase.payer | lowercase) == 'mingyao' ? 'active': ''">Mingyao</button>
+                    <button class="btn btn-outline-secondary" type="button" (click)="setPayer($event)"
+                        [ngClass]="(localPurchase.payer | lowercase) == 'rosy' ? 'active': ''">Rosy</button>
+                    <button class="btn btn-outline-secondary" type="button" (click)="setPayer($event)"
+                        [ngClass]="(localPurchase.payer | lowercase) == 'zelena' ? 'active': ''">Zelena</button>
+                    <button class="btn btn-outline-secondary" type="button" (click)="setPayer($event)"
+                        [ngClass]="(localPurchase.payer | lowercase) == 'liam' ? 'active': ''">Liam</button>
+                </div>
+                <input type="text" class="form-control" aria-label="Title" [ngModel]="localPurchase.payer"
+                    (ngModelChange)="localPurchase.payer = $event">
+            </div>
+        </div>
+
+    </div>
+    <div class="row mx-auto">
+        <div class="col-md col-sm-12">
+            <div class="input-group input-group-lg mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Mingyao $</span>
+                </div>
+                <input type="number" class="form-control" aria-label="Total Amount"
+                    [ngModel]="localPurchase.detail.mingyao.amount"
+                    (ngModelChange)="localPurchase.detail.mingyao.amount = $event">
+                <div class="input-group-append">
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-lg btn-outline-success"
+                            [ngClass]="localPurchase.detail.mingyao.paid ? 'active' : ''">
+                            <input type="checkbox" autocomplete="off" (change)="updatePaid($event, 'mingyao')">
+                            Paid
+                        </label>
+                    </div>
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-lg btn-outline-secondary"
+                            [ngClass]="localPurchase.detail.mingyao.exclude ? 'active' : ''">
+                            <input type="checkbox" autocomplete="off" (change)="updateExclude($event, 'mingyao')">
+                            Exclude
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md col-sm-12">
+            <div class="input-group input-group-lg mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Rosy $</span>
+                </div>
+                <input type="number" class="form-control" aria-label="Total Amount"
+                    [ngModel]="localPurchase.detail.rosy.amount"
+                    (ngModelChange)="localPurchase.detail.rosy.amount = $event">
+                <div class="input-group-append">
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-lg btn-outline-success"
+                            [ngClass]="localPurchase.detail.rosy.paid ? 'active' : ''">
+                            <input type="checkbox" autocomplete="off" (change)="updatePaid($event, 'rosy')">
+                            Paid
+                        </label>
+                    </div>
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-lg btn-outline-secondary"
+                            [ngClass]="localPurchase.detail.rosy.exclude ? 'active' : ''">
+                            <input type="checkbox" autocomplete="off" (change)="updateExclude($event, 'rosy')">
+                            Exclude
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mx-auto">
+        <div class="col-md col-sm-12">
+            <div class="input-group input-group-lg mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Zelena $</span>
+                </div>
+                <input type="number" class="form-control" aria-label="Total Amount"
+                    [ngModel]="localPurchase.detail.zelena.amount"
+                    (ngModelChange)="localPurchase.detail.zelena.amount = $event">
+                <div class="input-group-append">
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-lg btn-outline-success"
+                            [ngClass]="localPurchase.detail.zelena.paid ? 'active' : ''">
+                            <input type="checkbox" autocomplete="off" (change)="updatePaid($event, 'zelena')">
+                            Paid
+                        </label>
+                    </div>
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-lg btn-outline-secondary"
+                            [ngClass]="localPurchase.detail.zelena.exclude ? 'active' : ''">
+                            <input type="checkbox" autocomplete="off" (change)="updateExclude($event, 'zelena')">
+                            Exclude
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md col-sm-12">
+            <div class="input-group input-group-lg mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Liam $</span>
+                </div>
+                <input type="number" class="form-control" aria-label="Total Amount"
+                    [ngModel]="localPurchase.detail.liam.amount"
+                    (ngModelChange)="localPurchase.detail.liam.amount = $event">
+                <div class="input-group-append">
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-lg btn-outline-success"
+                            [ngClass]="localPurchase.detail.liam.paid ? 'active' : ''">
+                            <input type="checkbox" autocomplete="off" (change)="updatePaid($event, 'liam')">
+                            Paid
+                        </label>
+                    </div>
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-lg btn-outline-secondary"
+                            [ngClass]="localPurchase.detail.liam.exclude ? 'active' : ''">
+                            <input type="checkbox" autocomplete="off" (change)="updateExclude($event, 'liam')">
+                            Exclude
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mx-auto">
+        <div class="col-md col-sm-12">
+            <div class="input-group input-group-lg mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Others $</span>
+                </div>
+                <input type="number" class="form-control" aria-label="Total Amount"
+                    [value]="localPurchase.detail.others.amount">
+                <div class="input-group-append">
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-lg btn-outline-secondary"
+                            [ngClass]="localPurchase.detail.others.exclude ? 'active' : ''">
+                            <input type="checkbox" autocomplete="off" (change)="updateExclude($event, 'others')">
+                            Exclude
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md col-sm-12">
+
+            <div class="input-group input-group-lg mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Upload</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="receiptUpload" aria-describedby="receiptUpload"
+                        (change)="updateImage($event)">
+                    <label class="custom-file-label"
+                        for="receiptUpload">{{ image ? image["name"] : 'Choose Image Receipt'}}</label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row mx-auto">
+        <div class="col-md-6 col-sm-12">
+            <div class="row ">
+                <div class="col">
+                    <button type="button" class="btn btn-lg btn-danger text-truncate" (click)="clearForm()">Clear
+                        Form</button>
+                </div>
+                <div class="col">
+
+                    <button type="button" class="btn btn-lg btn-primary text-truncate" (click)="submitChange()">Submit
+                        to
+                        Server</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="row ">
+                <div class="col">
+                    <button type="button" class="btn btn-lg btn-secondary text-truncate"
+                        (click)="showOwningAlert()">Show Owning
+                        Amount</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mx-auto">
+        <div class="col col-lg-12 col-md-12 col-sm-12 w-100">
+
+            <hr>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 mx-auto">
+
+            <div class="row mx-auto">
+                <div class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    <b>Load</b>
+                </div>
+                <div class="text-truncate col-md-2 col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    <b>Place/Title</b>
+                </div>
+                <div class="text-truncate col-md-2 col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    <b>Date</b>
+                </div>
+                <div class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    <b>Total</b>
+                </div>
+                <div class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    <b>Mingyao</b>
+                </div>
+                <div class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    <b>Rosy</b>
+                </div>
+                <div class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    <b>Zelena</b>
+                </div>
+                <div class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    <b>Liam</b>
+                </div>
+                <div class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    <b>Others</b>
+                </div>
+                <div class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    <b>Image</b>
+                </div>
+                <!-- <div class="text-truncate col pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                                <b>All: </b>
+                            </div> -->
+            </div>
+            <div class="row mx-auto" *ngFor="let purchase of purchases">
+
+                <div [ngClass]="purchase.id == localPurchase.id ? 'active' : ''"
+                    class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    <button type="button" class="btn btn-outline-secondary btn-lg" (click)="loadOnePurchase(purchase)">
+                        <fa-icon [icon]="faEdit" style="color: black;"></fa-icon>
+                    </button>
+                </div>
+
+                <div class="text-truncate col-md-2 col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    {{purchase.place}} {{ purchase.place && purchase.title ? ": " : ""}} {{purchase.title}}
+                </div>
+                <div class="text-truncate col-md-2 col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    {{purchase.date}}
+                </div>
+                <div class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    {{purchase.total}}
+                </div>
+                <div class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1"
+                    [ngClass]="((purchase.payer | lowercase) == 'mingyao' ? 'text-primary void_' : '') + (purchase.detail.mingyao.paid == true || (purchase.detail.mingyao.exclude && purchase.detail.mingyao.amount == 0) ? 'text-success' : 'text-danger')">
+                    {{purchase.detail.mingyao.exclude ? getRoundedNumber(purchase.detail.mingyao.amount) : getRoundedNumber((purchase.detail.mingyao.amount + calculateSplit(purchase)))}}
+                </div>
+                <div class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1"
+                    [ngClass]="((purchase.payer | lowercase) == 'rosy' ? 'text-primary void_' : '') + (purchase.detail.rosy.paid == true || (purchase.detail.rosy.exclude && purchase.detail.rosy.amount == 0) ? 'text-success' : 'text-danger')">
+                    {{purchase.detail.rosy.exclude ? getRoundedNumber(purchase.detail.rosy.amount) : getRoundedNumber((purchase.detail.rosy.amount + calculateSplit(purchase)))}}
+                </div>
+                <div class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1"
+                    [ngClass]="((purchase.payer | lowercase) == 'zelena' ? 'text-primary void_' : '') + (purchase.detail.zelena.paid == true || (purchase.detail.zelena.exclude && purchase.detail.zelena.amount == 0) ? 'text-success' : 'text-danger')">
+                    {{purchase.detail.zelena.exclude ? getRoundedNumber(purchase.detail.zelena.amount) : getRoundedNumber((purchase.detail.zelena.amount + calculateSplit(purchase)))}}
+                </div>
+                <div class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1"
+                    [ngClass]="((purchase.payer | lowercase) == 'liam' ? 'text-primary void_' : '') + (purchase.detail.liam.paid == true || (purchase.detail.liam.exclude && purchase.detail.liam.amount == 0) ? 'text-success' : 'text-danger')">
+                    {{purchase.detail.liam.exclude ? getRoundedNumber(purchase.detail.liam.amount) : getRoundedNumber((purchase.detail.liam.amount + calculateSplit(purchase)))}}
+                </div>
+                <div class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1"
+                    [ngClass]="((purchase.payer | lowercase) == 'others' ? 'text-primary void_' : '') + (purchase.detail.others.paid == true || (purchase.detail.others.exclude && purchase.detail.others.amount == 0) ? 'text-success' : 'text-danger')">
+                    {{purchase.detail.others.exclude ? getRoundedNumber(purchase.detail.others.amount) : getRoundedNumber((purchase.detail.others.amount + calculateSplit(purchase)))}}
+                </div>
+                <div class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    <button *ngIf="purchase._imageId" type="button" class="btn btn-outline-secondary btn-lg"
+                        (click)="loadReceipt(purchase._imageId)">
+                        <fa-icon [icon]="faImage" style="color: black;"></fa-icon>
+                    </button>
+                </div>
+            </div>
+
+            <div class="col col-12">
+                <hr>
+            </div>
+            <div class="row mx-auto">
+                <div class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    <b>Total</b>
+                </div>
+                <div class="text-truncate col-md-2 col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    <b>--</b>
+                </div>
+                <div class="text-truncate col-md-2 col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    <b>--</b>
+                </div>
+                <div class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    <b>{{ getTotal('') }}</b>
+                </div>
+                <div class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    <b>{{ getTotal('mingyao') }}</b>
+                </div>
+                <div class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    <b>{{ getTotal('rosy') }}</b>
+                </div>
+                <div class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    <b>{{ getTotal('zelena') }}</b>
+                </div>
+                <div class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    <b>{{ getTotal('liam') }}</b>
+                </div>
+                <div class="text-truncate col-md col-sm-4 col-4 pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                    <b>{{ getTotal('others') }}</b>
+                </div>
+                <!-- <div class="text-truncate col pt-md-4 pt-1 pb-md-4 pb-1 pl-md-4 pl-1 pr-md-4 pr-1">
+                                            <b>All: </b>
+                                        </div> -->
+            </div>
+            <div class="col col-12 w-100">
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<app-footer></app-footer>

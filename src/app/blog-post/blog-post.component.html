@@ -1,0 +1,36 @@
+<div class="alert alert-primary" role="alert">
+    Wesite is under construction, many placeholder data present, please come back in a few days!
+</div>
+<!-- Post Content -->
+<div class="container">
+    <div style="height: 5rem; width: 5rem; display: block; position: relative;">
+        <a routerLink="/blog">
+            <fa-icon [icon]="faWindowClose" size="lg" style="color: black;"></fa-icon>
+        </a></div>
+</div>
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-14 mx-auto">
+                <br />
+                <article>
+                    <h1>{{ postObj.title }}</h1>
+                    <div class="blog-post">
+                        <h2 class="blog-post-title">{{ postObj.subTitle }}</h2>
+                        <p class="blog-post-meta">{{ postObj.createdAt }} by <a href="#">{{ postObj.author }}</a></p>
+
+                        <hr>
+                        <div class="articleContainer" *ngFor="let item of postObj.article"
+                            [innerHTML]=" '<'+item.tag+' class='+item.class+'>'+item.txt+'</'+item.tag+'>'">
+                        </div>
+
+                    </div>
+
+                </article>
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
