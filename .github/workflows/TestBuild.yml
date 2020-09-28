@@ -1,0 +1,31 @@
+name: Angular-App-AutoBuild&Test
+
+on: 
+  push:
+    branches: master
+    paths-ignore:
+        - 'node_server/**'
+        - '.github/**'
+        - 'dist/**'
+jobs:
+  build:
+
+    runs-on: ubuntu-20.04
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2-beta
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install, build, and test
+      run: |
+        npm install
+        npm run build
+      env:
+        CI: true
+      working-directory: ng_app
