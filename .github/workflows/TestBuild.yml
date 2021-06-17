@@ -4,7 +4,6 @@ on:
   push:
     branches: master
     paths-ignore:
-        - 'node_server/**'
         - '.github/**'
         - 'dist/**'
 jobs:
