@@ -15,7 +15,7 @@ export class InitLoaderComponent implements OnInit {
     strokeColor = '#FFF';
 
     private images = [  // aot compiler extract files from assets directory.
-        '../bg_new_1.jpg',
+        '../bg_1280_548_5.png',
         '../bg_1280_548_2.png',
         '../bg_1280_548_3.png',
         '../bg_1280_548_4.png',
