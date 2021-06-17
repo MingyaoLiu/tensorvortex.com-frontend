@@ -15,7 +15,7 @@ export class InitLoaderComponent implements OnInit {
     strokeColor = '#FFF';
 
     private images = [  // aot compiler extract files from assets directory.
-        '../bg_1280_548_5.png',
+        '../bg_new_1.jpg',
         '../bg_1280_548_2.png',
         '../bg_1280_548_3.png',
         '../bg_1280_548_4.png',
@@ -28,7 +28,7 @@ export class InitLoaderComponent implements OnInit {
         if (environment.production === false) {
             console.log('detect environment is dev');
             this.images = [
-                '../assets/bg_1280_548_5.png',
+                '../assets/bg_new_1.jpg',
                 'http://orig15.deviantart.net/d950/f/2009/187/9/8/big_wallpaper_05_1920x1200_by_kittenkiss.jpg',
                 '../assets/bg_1280_548_2.png',
                 'http://i2.cdn.turner.com/cnnnext/dam/assets/130419165742-dzhokar-tsarnaev-vk-exlarge-169.jpg',
