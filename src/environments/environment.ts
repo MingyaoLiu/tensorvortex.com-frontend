@@ -5,7 +5,7 @@
 export const environment = {
     version: require('../../package.json').version,
     googleAnalyticsKey: 'UA-135016209-2',
-    apiUri: 'https://localhost:8200/api',
+    apiUri: 'https://localhost:9200/api',
     production: false
 };
 
