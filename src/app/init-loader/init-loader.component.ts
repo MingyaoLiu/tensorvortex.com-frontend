@@ -19,6 +19,7 @@ export class InitLoaderComponent implements OnInit {
         '../bg_1280_548_2.png',
         '../bg_1280_548_3.png',
         '../bg_1280_548_4.png',
+        '../2020_headshot_2.png',
     ];
 
     constructor(private imagePreloadService: ImagePreloadService, private renderer: Renderer2) { }
