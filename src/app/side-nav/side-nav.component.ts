@@ -14,9 +14,9 @@ export class SideNavComponent implements OnInit {
 
     objectKeys = Object.keys;
     list: object = {
-        Home: '',
-        Project: '',
-        Blog: ''
+        home: '',
+        project: '',
+        blog: ''
     };
 
     constructor(@Inject(DOCUMENT) private document,
@@ -32,10 +32,10 @@ export class SideNavComponent implements OnInit {
             domainName === 'liumingyao.com' ||
             domainName === 'localhost') {
             this.list = {
-                Home: '',
-                Project: '',
-                Blog: '',
-                About: ''
+                home: '',
+                project: '',
+                blog: '',
+                about: ''
             };
         }
     }
