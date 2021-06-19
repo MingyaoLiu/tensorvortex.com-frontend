@@ -44,9 +44,23 @@ export class InitLoaderComponent implements OnInit {
             //     this.preloadImages();
             // }, 2000);
         } else {
-            setTimeout(() => {
-                this.preloadImages();
-            }, 2000);
+            const pathName = document.location.pathname;
+            if (pathName == '/resume') {
+                this.renderer.setStyle(
+                    this.progressPage.nativeElement,
+                    'opacity',
+                    '0'
+                );
+                this.renderer.setStyle(
+                    this.progressPage.nativeElement,
+                    'display',
+                    'none'
+                );
+            } else {
+                setTimeout(() => {
+                    this.preloadImages();
+                }, 2000);
+            }
         }
 
 
