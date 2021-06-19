@@ -39,13 +39,48 @@ export class InitLoaderComponent implements OnInit {
                 'https://www.google.com/images/srpr/logo11w.png',
                 'https://s.yimg.com/pw/images/sohp_2014/trees_noblur.jpg',
             ];
-            this.fadeOutProgress();
+
+            const pathName = document.location.pathname;
+            if (pathName == '/resume') {
+                this.renderer.setStyle(
+                    this.progressPage.nativeElement,
+                    '-webkit-transition',
+                    'none'
+                );
+                this.renderer.setStyle(
+                    this.progressPage.nativeElement,
+                    'transition',
+                    'none'
+                );
+                this.renderer.setStyle(
+                    this.progressPage.nativeElement,
+                    'opacity',
+                    '0'
+                );
+                this.renderer.setStyle(
+                    this.progressPage.nativeElement,
+                    'display',
+                    'none'
+                );
+            } else {
+                this.fadeOutProgress();
+            }
             // setTimeout(() => {
             //     this.preloadImages();
             // }, 2000);
         } else {
             const pathName = document.location.pathname;
             if (pathName == '/resume') {
+                this.renderer.setStyle(
+                    this.progressPage.nativeElement,
+                    '-webkit-transition',
+                    'none'
+                );
+                this.renderer.setStyle(
+                    this.progressPage.nativeElement,
+                    'transition',
+                    'none'
+                );
                 this.renderer.setStyle(
                     this.progressPage.nativeElement,
                     'opacity',
