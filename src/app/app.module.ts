@@ -29,6 +29,7 @@ import { PurchaseComponent } from './purchase/purchase.component';
 import { ImageComponent } from './image/image.component';
 import { ImageResolveService } from './image-resolve.service';
 import { ResumeComponent } from './resume/resume.component';
+import {NgParticlesModule} from "ng-particles";
 
 @NgModule({
     declarations: [
@@ -54,7 +55,8 @@ import { ResumeComponent } from './resume/resume.component';
         AppRoutingModule,
         FormsModule,
         FontAwesomeModule,
-        HttpClientModule
+        HttpClientModule,
+        NgParticlesModule
     ],
     providers: [
         GoogleAnalyticsService,

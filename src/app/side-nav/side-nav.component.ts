@@ -41,7 +41,15 @@ export class SideNavComponent implements OnInit {
     }
 
 
-
+   
+    particlesUrl = "../../assets/sidenav_particles.json";
+    particlesLoaded(container): void {
+        console.log(container);
+    }
+    
+    particlesInit(main): void {
+        console.log(main);
+    }
 
     openDraw(event) {
         const checkbox = event.target;

@@ -1,5 +1,7 @@
 <div #progress_page id="init-page">
-
+    <ng-particles id="tsparticles" [url]="particlesUrl" (particlesLoaded)="particlesLoaded($event)" (particlesInit)="particlesInit($event)">
+        
+    </ng-particles>
     <div class="container">
         <div class="row">
             <div class="col-lg-10 col-md-12 mx-auto">

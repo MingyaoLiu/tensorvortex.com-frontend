@@ -85,4 +85,13 @@ export class InitLoaderComponent implements OnInit {
         }, 1000);
 
     }
+    
+    particlesUrl = "../../assets/particles.json";
+    particlesLoaded(container): void {
+        console.log(container);
+    }
+    
+    particlesInit(main): void {
+        console.log(main);
+    }
 }

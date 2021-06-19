@@ -1,3 +1,7 @@
+<ng-particles id="navtsparticles" [url]="particlesUrl" (particlesLoaded)="particlesLoaded($event)" (particlesInit)="particlesInit($event)">
+        
+</ng-particles>
+
 <ul id="sideMenu" class="animated">
     <li style="z-index: 1000;" class="has-children" *ngFor="let item of objectKeys(list); index as i">
         <input routerLink="/{{item.toLowerCase()}}" (click)="openDraw($event)" type="checkbox" name="group-{{i}}"
